@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Суммы сборов</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f8f9fa;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+    .cards {
+      display: flex;
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 150px;
+      text-align: center;
+    }
+    .emoji {
+      font-size: 32px;
+    }
+    .amount {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+    .name {
+      font-size: 16px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">💗</div>
+      <div class="amount" id="alex">0</div>
+      <div class="name">Саша</div>
+    </div>
+    <div class="card">
+      <div class="emoji">🐾</div>
+      <div class="amount" id="tala">0</div>
+      <div class="name">Тала</div>
+    </div>
+    <div class="card">
+      <div class="emoji">🎧</div>
+      <div class="amount" id="kris">0</div>
+      <div class="name">Крис</div>
+    </div>
+  </div>
+
+  <script>
+    fetch('data.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('alex').textContent = data.amount_alex;
+        document.getElementById('tala').textContent = data.amount_tala;
+        document.getElementById('kris').textContent = data.amount_kris;
+      });
+  </script>
+</body>
+</html>
